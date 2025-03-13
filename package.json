@@ -1,0 +1,19 @@
+{
+  "name": "bakespot",
+  "homepage": "https://Jviyata.github.io/bakespot1.io",  // This points to your GitHub Pages URL
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.1.0",
+    "react-scripts": "4.0.3",
+    "gh-pages": "^3.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "gh-pages -d build"  // Ensure this is correctly set
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
