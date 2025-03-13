@@ -1,122 +1,79 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
+import React, { useState } from 'react';
+import './App.css';
 
-body {
-    background-color: #f8f8f8;
-    padding-left: 220px;
-}
+// Sample image data
+const images = [
+  { src: "/images/Cake1.jpg", category: "Cake" },
+  { src: "/images/Cookie1.jpg", category: "Cookie" },
+  { src: "/images/Pie1.jpg", category: "Pie" },
+  { src: "/images/Treat1.jpg", category: "Treat" },
+  { src: "/images/Cake2.jpg", category: "Cake" },
+  { src: "/images/Cookie2.jpg", category: "Cookie" },
+  { src: "/images/Pie2.jpg", category: "Pie" },
+  { src: "/images/Treat2.jpg", category: "Treat" }
+];
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
+// Navbar Component
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="logo">
+        <a href="/"><img src="/images/BAKESPOT.png" alt="BakeSpot Logo" /></a>
+      </div>
+      <ul className="nav-links">
+        <li><a href="/explore"><img src="/images/exploreicon.png" alt="Explore Icon" /> Explore</a></li>
+        <li><a href="/recipes"><img src="/images/recipesicon.png" alt="Recipes Icon" /> Recipes</a></li>
+        <li><a href="/profiles"><img src="/images/profilesicon.png" alt="Profile Icon" /> Profile</a></li>
+      </ul>
+    </nav>
+  );
+};
 
-.logo img {
-    height: 50px;
-    margin-bottom: 20px;
-}
+// FilterBar Component
+const FilterBar = ({ onFilterChange }) => {
+  return (
+    <div className="filter-bar">
+      <button className="filter-button active" onClick={() => onFilterChange('')}>All</button>
+      <button className="filter-button" onClick={() => onFilterChange('Cake')}>Cake</button>
+      <button className="filter-button" onClick={() => onFilterChange('Cookie')}>Cookie</button>
+      <button className="filter-button" onClick={() => onFilterChange('Pie')}>Pie</button>
+      <button className="filter-button" onClick={() => onFilterChange('Treat')}>International</button>
+    </div>
+  );
+};
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    text-align: center;
-}
+// PhotoGrid Component
+const PhotoGrid = ({ filteredImages }) => {
+  return (
+    <div className="container" id="photoGrid">
+      {filteredImages.map((img, index) => (
+        <div className="photo-item" key={index}>
+          <img src={img.src} alt={`Image ${index}`} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.3s;
-}
+// Main App Component
+const App = () => {
+  const [filter, setFilter] = useState('');
 
-.nav-links a img {
-    width: 20px;
-    height: 20px;
-}
+  const handleFilterChange = (category) => {
+    setFilter(category);
+  };
 
-.nav-links a:hover {
-    background-color: #ddd;
-}
+  const filteredImages = filter 
+    ? images.filter(img => img.category === filter)
+    : images;
 
-.filter-bar {
-    position: fixed;
-    top: 0;
-    left: 220px;
-    width: calc(100% - 220px);
-    background-color: white;
-    padding: 10px 20px;
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-}
+  return (
+    <div>
+      <Navbar />
+      <FilterBar onFilterChange={handleFilterChange} />
+      <PhotoGrid filteredImages={filteredImages} />
+    </div>
+  );
+};
 
-.filter-button {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #ddd;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.filter-button.active, .filter-button:hover {
-    background-color: #b04c54;
-    color: white;
-}
-
-.container {
-    column-count: 4;
-    column-gap: 15px;
-    max-width: 1200px;
-    margin: 80px auto 20px auto;
-    padding: 0 20px;
-}
-
-.photo-item {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.photo-item:hover {
-    transform: scale(1.05);
-}
-
-.photo-item img {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-}
-
-@media (max-width: 1024px) { .container { column-count: 3; } }
-@media (max-width: 768px) { .container { column-count: 2; } }
-@media (max-width: 480px) { .container { column-count: 1; } }
+export default App;
