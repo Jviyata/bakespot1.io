@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import './App.css';  // Make sure this import is here
+import './App.css';
 
 // Sample image data
 const images = [
-    { src: "/images/Cake1.jpg", category: "Cake" }, 
+    { src: "/images/Cake1.jpg", category: "Cake" },
     { src: "/images/Cookie1.jpg", category: "Cookie" },
     { src: "/images/Pie1.jpg", category: "Pie" },
     { src: "/images/Treat1.jpg", category: "Treat" },
-    { src: "/images/Cake2.jpg", category: "Cake" }, 
+    { src: "/images/Cake2.jpg", category: "Cake" },
     { src: "/images/Cookie2.jpg", category: "Cookie" },
-    { src: "/images/Pie2.jpg", category: "Pie" }, 
+    { src: "/images/Pie2.jpg", category: "Pie" },
     { src: "/images/Treat2.jpg", category: "Treat" }
 ];
 
