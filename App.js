@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.css';  // Make sure this import is here
 
 // Sample image data
 const images = [
-    { src: "images/Cake1.jpg", category: "Cake" }, 
-    { src: "images/Cookie1.jpg", category: "Cookie" },
-    { src: "images/Pie1.jpg", category: "Pie" },
-    { src: "images/Treat1.jpg", category: "Treat" },
-    { src: "images/Cake2.jpg", category: "Cake" }, 
-    { src: "images/Cookie2.jpg", category: "Cookie" },
-    { src: "images/Pie2.jpg", category: "Pie" }, 
-    { src: "images/Treat2.jpg", category: "Treat" }
+    { src: "/images/Cake1.jpg", category: "Cake" }, 
+    { src: "/images/Cookie1.jpg", category: "Cookie" },
+    { src: "/images/Pie1.jpg", category: "Pie" },
+    { src: "/images/Treat1.jpg", category: "Treat" },
+    { src: "/images/Cake2.jpg", category: "Cake" }, 
+    { src: "/images/Cookie2.jpg", category: "Cookie" },
+    { src: "/images/Pie2.jpg", category: "Pie" }, 
+    { src: "/images/Treat2.jpg", category: "Treat" }
 ];
 
 const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">
-                <a href="dashboard.html"><img src="images/BAKESPOT.png" alt="BakeSpot Logo" /></a>
+                <a href="/"><img src="/images/BAKESPOT.png" alt="BakeSpot Logo" /></a>
             </div>
             <ul className="nav-links">
-                <li><a href="explore.html"><img src="images/exploreicon.png" alt="Explore Icon" /> Explore</a></li>
-                <li><a href="recipes.html"><img src="images/recipesicon.png" alt="Recipes Icon" /> Recipes</a></li>
-                <li><a href="profiles.html"><img src="images/profilesicon.png" alt="Profile Icon" /> Profile</a></li>
+                <li><a href="/explore"><img src="/images/exploreicon.png" alt="Explore Icon" /> Explore</a></li>
+                <li><a href="/recipes"><img src="/images/recipesicon.png" alt="Recipes Icon" /> Recipes</a></li>
+                <li><a href="/profiles"><img src="/images/profilesicon.png" alt="Profile Icon" /> Profile</a></li>
             </ul>
         </nav>
     );
